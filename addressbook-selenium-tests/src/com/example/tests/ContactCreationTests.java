@@ -22,18 +22,18 @@ public class ContactCreationTests extends TestBase {
 		contact.secondaryAddress = "Podolsk2";
 		contact.secondaryHome = "Podolsk3";
 		
-		app.navigationHelper.openMainPage();
-		app.contactHelper.initContactCreation();
-		app.contactHelper.fillContactForm(app, this, contact);
-		app.contactHelper.submitContactForm();
-		app.contactHelper.returnToGroupPage();
+		app.getNavigationHelper().openMainPage();
+		app.getContactHelper().initContactCreation();
+		app.getContactHelper().fillContactForm(contact);
+		app.getContactHelper().submitContactForm();
+		app.getContactHelper().returnToGroupPage();
 	}
 
 	@Test
 	public void testEmptyContactCreation() throws Exception {
-		app.navigationHelper.openMainPage();
-		app.contactHelper.initContactCreation();
-		app.contactHelper.submitContactForm();
-		app.contactHelper.returnToGroupPage();
+		app.getNavigationHelper().openMainPage();
+		app.getContactHelper().initContactCreation();
+		app.getContactHelper().submitContactForm();
+		app.getContactHelper().returnToGroupPage();
 	}
 }
