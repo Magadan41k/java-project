@@ -47,12 +47,12 @@ public class ContactHelper extends HelperBase {
 
 	}
 
-	private void selectContactByEdit() {
-		click(By.cssSelector("img[alt=\"Edit\"]"));
-	}
-
 	private void selectContactByIndex(int index) {
 		click(By.xpath("//input[@name='selected[]'][" + index + "]"));
+	}
+
+	private void selectContactByEdit() {
+		click(By.cssSelector("img[alt=\"Edit\"]"));
 	}
 
 	public void initContactModification(int index) {
@@ -62,6 +62,7 @@ public class ContactHelper extends HelperBase {
 
 	public void submitContactModification() {
 		click(By.name("update"));
+		click(By.linkText("home page"));
 
 	}
 

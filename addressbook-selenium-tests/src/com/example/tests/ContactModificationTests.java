@@ -11,7 +11,6 @@ public class ContactModificationTests extends TestBase {
 		ContactData contact = new ContactData();
 		contact.firstName = "new first";
 		app.getContactHelper().fillContactForm(contact);
-		app.getContactHelper().submitContactForm();
-
+		app.getContactHelper().submitContactModification();
 	}
 }
