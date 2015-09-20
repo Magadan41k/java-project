@@ -52,7 +52,7 @@ public class ContactHelper extends HelperBase {
 	}
 
 	private void selectContactByIndex(int index) {
-		click(By.xpath("//input[@name='selected[]'][" + index + "]"));
+		click(By.xpath("//input[@name='selected[]'][" + (index+1) + "]"));
 	}
 
 	private void selectContactByEdit() {
@@ -70,15 +70,16 @@ public class ContactHelper extends HelperBase {
 
 	}
 
-	public List<ContactData> getContacts() {
-		List<ContactData> contacts = new ArrayList<ContactData>();
-		List<WebElement> checkboxes = driver.findElements(By.name("selected[]"));
-		for (WebElement checkbox : checkboxes) {
-			ContactData contact = new ContactData();
-			String title = checkbox.getAttribute("title");
-			contact.firstName = title.substring("Select(".length(), title.length() - ")".length());
-			contacts.add(contact);
-		}
+    public List<ContactData> getContacts() {
+        List<ContactData> contacts = new ArrayList<ContactData>();
+        List<WebElement> checkboxes =  driver.findElements(By.name("selected[]"));
+
+        for (WebElement checkbox : checkboxes){
+            ContactData contact = new ContactData();
+            String accept = checkbox.getAttribute("accept");
+            contact.email= accept;
+            contacts.add(contact);
+        }
 		return contacts;
 	}
 
