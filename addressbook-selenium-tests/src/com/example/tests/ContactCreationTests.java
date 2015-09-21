@@ -2,16 +2,54 @@ package com.example.tests;
 
 import static org.testng.Assert.assertEquals;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
-
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class ContactCreationTests extends TestBase {
 
-	@Test
-	public void NonEmptyContactCreationTest() throws Exception {
+	@DataProvider
+	public Iterator<Object[]> randomValidContactGenerator() {
+		List<Object[]> list = new ArrayList<Object[]>();
+
+		for (int i = 0; i < 5; i++) {
+			ContactData contact = new ContactData();
+			contact.firstName = generateRandomString();
+			contact.lastName = generateRandomString();
+			contact.address = generateRandomString();
+			contact.telephoneHome = generateRandomString();
+			contact.telephoneMobile = generateRandomString();
+			contact.telephoneWork = generateRandomString();
+			contact.email = generateRandomString();
+			contact.email2 = generateRandomString();
+			contact.birthDay = generateRandomString();
+			contact.birthMonth = generateRandomString();
+			contact.birthYear = generateRandomString();
+			contact.group = generateRandomString();
+			contact.secondaryAddress = generateRandomString();
+			contact.secondaryHome = generateRandomString();
+			list.add(new Object[] { contact });
+		}
+		// ....
+		return list.iterator();
+	}
+
+	public String generateRandomString() {
+		Random rnd = new Random();
+		if (rnd.nextInt(10) == 0) {
+			return "";
+		} else {
+			return "test" + rnd.nextInt();
+		}
+	}
+
+	@Test(dataProvider = "randomValidContactGenerator")
+	public void testContactCreationWithValidData(ContactData contact) throws Exception {
 		app.getNavigationHelper().openMainPage();
 
 		// save old state
@@ -19,20 +57,6 @@ public class ContactCreationTests extends TestBase {
 
 		// actions
 		app.getContactHelper().initContactCreation();
-		ContactData contact = new ContactData();
-		contact.firstName = "Misha";
-		contact.lastName = "Tishin";
-		contact.address = "Podolsk";
-		contact.telephoneHome = "8905";
-		contact.telephoneMobile = "8916";
-		contact.telephoneWork = "8926";
-		contact.email = "tishin@mail.ru";
-		contact.birthDay = "14";
-		contact.birthMonth = "April";
-		contact.birthYear = "1988";
-		contact.group = "group name 1";
-		contact.secondaryAddress = "Podolsk2";
-		contact.secondaryHome = "Podolsk3";
 		app.getContactHelper().fillContactForm(contact);
 		app.getContactHelper().submitContactForm();
 		app.getContactHelper().returnToGroupPage();
@@ -45,28 +69,6 @@ public class ContactCreationTests extends TestBase {
 		Collections.sort(oldList);
 		Collections.sort(newList);
 		assertEquals(newList, oldList);
-	}
-
-	
-	
-	@Test
-	public void testEmptyContactCreation() throws Exception {
-		app.getNavigationHelper().openMainPage();
-
-		// save old state
-		List<ContactData> oldList = app.getContactHelper().getContacts();
-
-		// actions
-		app.getContactHelper().initContactCreation();
-		app.getContactHelper().submitContactForm();
-		app.getContactHelper().returnToGroupPage();
-
-		// save new state
-		List<ContactData> newList = app.getContactHelper().getContacts();
-
-		// compare states
-		Collections.sort(oldList);
-		Collections.sort(newList);
 	}
 
 }

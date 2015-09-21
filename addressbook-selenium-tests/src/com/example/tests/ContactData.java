@@ -20,6 +20,7 @@ public class ContactData implements Comparable<ContactData> {
 	@Override
 	public String toString() {
 		return "ContactData [email=" + email + "]";
+
 	}
 
 	@Override
