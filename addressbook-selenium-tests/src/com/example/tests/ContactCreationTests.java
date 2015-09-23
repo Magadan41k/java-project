@@ -26,16 +26,11 @@ public class ContactCreationTests extends TestBase {
 			contact.telephoneMobile = generateRandomString();
 			contact.telephoneWork = generateRandomString();
 			contact.email = generateRandomString();
-			contact.email2 = generateRandomString();
-			contact.birthDay = generateRandomString();
-			contact.birthMonth = generateRandomString();
-			contact.birthYear = generateRandomString();
-			contact.group = generateRandomString();
+			contact.email2 = generateRandomString();				
 			contact.secondaryAddress = generateRandomString();
 			contact.secondaryHome = generateRandomString();
 			list.add(new Object[] { contact });
-		}
-		// ....
+		}		
 		return list.iterator();
 	}
 
@@ -47,6 +42,7 @@ public class ContactCreationTests extends TestBase {
 			return "test" + rnd.nextInt();
 		}
 	}
+	
 
 	@Test(dataProvider = "randomValidContactGenerator")
 	public void testContactCreationWithValidData(ContactData contact) throws Exception {
