@@ -20,15 +20,7 @@ public class ContactCreationTests extends TestBase {
 		for (int i = 0; i < 5; i++) {
 			ContactData contact = new ContactData();
 			contact.firstName = generateRandomString();
-			contact.lastName = generateRandomString();
-			contact.address = generateRandomString();
-			contact.telephoneHome = generateRandomString();
-			contact.telephoneMobile = generateRandomString();
-			contact.telephoneWork = generateRandomString();
-			contact.email = generateRandomString();
-			contact.email2 = generateRandomString();				
-			contact.secondaryAddress = generateRandomString();
-			contact.secondaryHome = generateRandomString();
+			contact.lastName = generateRandomString();		
 			list.add(new Object[] { contact });
 		}		
 		return list.iterator();

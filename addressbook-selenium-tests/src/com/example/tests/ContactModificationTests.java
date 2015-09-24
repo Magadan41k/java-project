@@ -19,7 +19,7 @@ public class ContactModificationTests extends TestBase {
 		// actions
 		app.getContactHelper().initContactModification(0);
 		ContactData contact = new ContactData();
-		contact.email = "new email";
+		contact.firstName = "new firstName";
 		app.getContactHelper().fillContactForm(contact);
 		app.getContactHelper().submitContactModification();
 
