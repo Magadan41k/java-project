@@ -77,6 +77,7 @@ public class ContactHelper extends HelperBase {
 			ContactData contact = new ContactData();
 			List<WebElement> cells = row.findElements(By.tagName("td"));
 			String name = cells.get(1).getText();
+			contact.firstName = cells.get(3).getText();
 			contacts.add(contact);
 		}
 
