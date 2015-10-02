@@ -39,9 +39,22 @@ public class TestBase {
 		return list.iterator();
 	}
 
+	@DataProvider
+	public Iterator<Object[]> randomValidContactGenerator() {
+		List<Object[]> list = new ArrayList<Object[]>();
+
+		for (int i = 0; i < 5; i++) {
+			ContactData contact = new ContactData();
+			contact.firstName = generateRandomString();
+			contact.lastName = generateRandomString();
+			list.add(new Object[] { contact });
+		}
+		return list.iterator();
+	}
+
 	public String generateRandomString() {
 		Random rnd = new Random();
-		if (rnd.nextInt(3) == 0) {
+		if (rnd.nextInt(10) == 0) {
 			return "";
 		} else {
 			return "test" + rnd.nextInt();
