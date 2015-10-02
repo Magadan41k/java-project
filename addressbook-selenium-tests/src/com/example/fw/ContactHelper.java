@@ -45,30 +45,21 @@ public class ContactHelper extends HelperBase {
 	}
 
 	public void deleteContact(int index) {
-		selectContactByIndex(index);
-		selectContactByEdit();
-		click(By.xpath("(//input[@name='update'])[2]"));
+        selectContactByIndex(index);
+      click(By.xpath("(//input[@name='update'])[2]"));
+    }
 
-	}
+    public void initContactModification(int index) {
+        selectContactByIndex(index);
+    }
 
-	private void selectContactByIndex(int index) {
-		click(By.xpath("//input[@name='selected[]'][" + (index + 1) + "]"));
-	}
+    public void updateContactModification() {
+        click(By.xpath("//input[11]"));
+    }
 
-	private void selectContactByEdit() {
-		click(By.cssSelector("img[alt=\"Edit\"]"));
-	}
-
-	public void initContactModification(int index) {
-		selectContactByIndex(index);
-		selectContactByEdit();
-	}
-
-	public void submitContactModification() {
-		click(By.name("update"));
-		click(By.linkText("home page"));
-
-	}
+    private void selectContactByIndex(int index) {
+            click(By.xpath("//tr[@name='entry'][" + (index + 1) + "]/td/a/img[@title='Edit']"));
+    }
 
 	public List<ContactData> getContacts() {
 		List<ContactData> contacts = new ArrayList<ContactData>();

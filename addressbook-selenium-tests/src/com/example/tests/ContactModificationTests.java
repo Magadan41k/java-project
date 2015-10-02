@@ -2,13 +2,10 @@ package com.example.tests;
 
 import static org.testng.Assert.assertEquals;
 
-import java.util.ArrayList;
+
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
-
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class ContactModificationTests extends TestBase {
@@ -26,7 +23,7 @@ public class ContactModificationTests extends TestBase {
 		// actions
 		app.getContactHelper().initContactModification(index);
 		app.getContactHelper().fillContactForm(contact);
-		app.getContactHelper().submitContactModification();
+		app.getContactHelper().updateContactModification();
 		app.getContactHelper().returnToGroupPage();
 
 		// save new state
